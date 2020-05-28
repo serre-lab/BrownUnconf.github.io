@@ -1,0 +1,498 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <link rel="stylesheet" href="static/css/main.css" />
+    <link rel="stylesheet" href="static/css/lazy_load.css" />
+    <link rel="stylesheet" href="static/css/typeahead.css" />
+
+    <!-- External Javascript libs  -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.3/handlebars.min.js"
+      integrity="sha256-/PJBs6QWvXijOFIX04kZpLb6ZtSQckdOIavLWKKOgXU="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"
+      integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.28/moment-timezone-with-data.min.js"
+      integrity="sha256-IWYg4uIC8/erItNXYvLtyYHioRi2zT1TFva8qaAU/ww="
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Library libs -->
+    <script src="static/js/typeahead.bundle.js"></script>
+
+    <!-- External CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+
+    <!-- External Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato:400,900&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Cuprum"
+      rel="stylesheet"
+    />
+
+    <title></title>
+    
+  </head>
+
+  <body>
+    <!-- NAV -->
+    
+    <nav
+      class="navbar sticky-top navbar-expand-lg navbar-light bg-light mr-auto"
+      id="main-nav"
+    >
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <img
+             class="logo" src="static/images/MiniConf.png"
+             height="auto"
+             width="180px"
+          />
+        </a>
+        
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse text-right flex-grow-1"
+          id="navbarNav"
+        >
+          <ul class="navbar-nav ml-auto">
+            
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            
+            <li class="nav-item ">
+              <a class="nav-link" href="calendar.html">Schedule</a>
+            </li>
+            
+            <li class="nav-item ">
+              <a class="nav-link" href="papers.html">Papers</a>
+            </li>
+            
+            <li class="nav-item ">
+              <a class="nav-link" href="workshops.html">Workshops</a>
+            </li>
+            
+            <li class="nav-item ">
+              <a class="nav-link" href="about.html">Help</a>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+
+    <!-- User Overrides -->
+    
+<style>
+  .back {
+    background: url("static/images/brown.jpg") no-repeat center;
+    background-size: cover;
+  }
+  .back h2 {
+    font-family: "Lato", sans-serif;
+    font-weight: 1200;
+  }
+  .back h1 {
+    font-family: "Lato", sans-serif;
+    font-weight: 1000;
+  }
+  
+  .btn {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    background-color: white;
+    border: white;
+    color: gray;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: white;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+</style>
+
+<div class="jumbotron jumbotron-fluid back" style="padding-bottom: 20px;">
+  <div class="row header p-6 m-5">
+    <div class="p-1 mx-auto text-center text-white col-md-9 col-sm-12">
+      <h2>
+        Welcome to the Brown Unconference on:
+      </h2>
+      <h1 class="p-3">
+        Computational Intelligence and Applications
+      </h1>
+      <h2 class="p-3" >
+        June 2020
+      </h2>
+     
+      <div class="button p-2">
+          <a href="https://forms.gle/KWE3hSjzj956bLUa8" target="_blank" class="btn">Register</a>
+          <a href="https://forms.gle/MFgdotPbG68vgyMA6" target="_blank" class="btn">Submit </a>
+    </div>
+    </div>
+    
+  </div>
+</div>
+
+
+    <div class="container">
+      <!-- Tabs -->
+      <div class="tabs">
+         
+      </div>
+      <!-- Content -->
+      <div class="content">
+        
+
+<h1>Our Goal</h1>
+<p>The first annual Brown Unconference is an opportunity for researchers across Brown University to come together to explore advances at the intersection of computational neuroscience, cognitive science, data science, and AI. </p>
+<h1>Important Dates</h1>
+<p>Abstract Submission: June 15, 2020
+Conference: June 29-30, 2020</p>
+<h1>Schedule</h1>
+<p>The schedule will be announced closer to the date of the conference. Across the two days of the conference, there will be three types of programs:</p>
+<ul>
+<li>Lightning talks: 2 minute talks, introducing research and future directions</li>
+<li>Short talks: 3-5 minute talks presenting research, with an open chat</li>
+<li>Contributed talks: longer talks from invited speakers</li>
+</ul>
+<h1>Goals</h1>
+<p>The purpose of the Brown Unconference is to celebrate the scientific advances happening throughout the university, and allow for further collaboration across departments.</p>
+<h1>Registration</h1>
+<p>Please register <a href="https://forms.gle/KWE3hSjzj956bLUa8">here</a> To receive all the latest updates about the conference, including links  and instructions to watch the presentations. </p>
+<h1>Submission</h1>
+<p>We welcome submission for all the deparment working on computational intelligence. Send your abstract <a href="https://forms.gle/MFgdotPbG68vgyMA6">here</a>. This is a safe space to share ideas so feel free to send work in progress. </p>
+<!-- Registration -->
+
+  
+
+<!-- Sponsor -->
+      <div class="sponsors">
+        <div class="border-top my-3"></div>
+        <div class="row p-4">
+        </div>
+        <div class="row p-4" id="organizers">
+          <div class="col-12 bd-content ">
+            <h2 class="text-center"> Sponsors </h2>
+          </div>
+        </div>
+        <!-- <center> -->
+        <!-- <img src="static/images/sponsors.png" width="100%" /> -->
+        <!-- </center> -->
+        
+        <div class="row p-3">
+          <div class="col-12 bd-content ">
+            <h3 class="">
+            Brown </h2>
+          </div>
+        </div>
+        <div class="row justify-content-start">
+          
+          
+          <div class="col-md-4 col-xs-12 p-2" style="display: flex;flex-flow:wrap; margin-left:0; box-sizing: border-box; border:none;">
+            <div class="card "style="display:block; overflow:hidden; width:95%; border:none;">
+              <div class="card-header d-flex flex-wrap justify-content-center align-items-center" style="height: 300px; background-color:white; border:none;">
+                <a  target="_blank" href="#"><img src="https://i2.wp.com/www.robinsonschool.org/wp-content/uploads/2018/01/Brown-University.png?ssl=1" style="width:;" class="sponsorLogo" alt="Brown University" /></a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-4 col-xs-12 p-2" style="display: flex;flex-flow:wrap; margin-left:0; box-sizing: border-box; border:none;">
+            <div class="card "style="display:block; overflow:hidden; width:95%; border:none;">
+              <div class="card-header d-flex flex-wrap justify-content-center align-items-center" style="height: 300px; background-color:white; border:none;">
+                <a  target="_blank" href="#"><img src="https://www.brown.edu/carney/sites/carney/files/styles/large/public/images/news/CARNEY_brain_carneywordmark.png?itok=3GEPtuV4" style="width:;" class="sponsorLogo" alt="Carney Institute for Brain Science" /></a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-4 col-xs-12 p-2" style="display: flex;flex-flow:wrap; margin-left:0; box-sizing: border-box; border:none;">
+            <div class="card "style="display:block; overflow:hidden; width:95%; border:none;">
+              <div class="card-header d-flex flex-wrap justify-content-center align-items-center" style="height: 300px; background-color:white; border:none;">
+                <a  target="_blank" href="#"><img src="https://avatars0.githubusercontent.com/u/16960394?s=200&amp;v=4" style="width:;" class="sponsorLogo" alt="Center for Computation &amp; Visualization" /></a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-4 col-xs-12 p-2" style="display: flex;flex-flow:wrap; margin-left:0; box-sizing: border-box; border:none;">
+            <div class="card "style="display:block; overflow:hidden; width:95%; border:none;">
+              <div class="card-header d-flex flex-wrap justify-content-center align-items-center" style="height: 300px; background-color:white; border:none;">
+                <a  target="_blank" href="#"><img src="https://brown.edu/Research/Ramachandran_Lab/files/logos/ccmbwithtext.png" style="width:;" class="sponsorLogo" alt="Center for Computational &amp; Molecular Biology" /></a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-4 col-xs-12 p-2" style="display: flex;flex-flow:wrap; margin-left:0; box-sizing: border-box; border:none;">
+            <div class="card "style="display:block; overflow:hidden; width:95%; border:none;">
+              <div class="card-header d-flex flex-wrap justify-content-center align-items-center" style="height: 300px; background-color:white; border:none;">
+                <a  target="_blank" href="#"><img src="https://scontent-lga3-1.xx.fbcdn.net/v/t1.0-9/14705843_421752337949018_2350634261249810825_n.jpg?_nc_cat=105&amp;_nc_sid=85a577&amp;_nc_ohc=aYhOG-NxEsUAX8tLjEd&amp;_nc_ht=scontent-lga3-1.xx&amp;oh=11ac1f30e978b5759007909bea33245e&amp;oe=5EF2BD84" style="width:;" class="sponsorLogo" alt="Data Science Initiative" /></a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-4 col-xs-12 p-2" style="display: flex;flex-flow:wrap; margin-left:0; box-sizing: border-box; border:none;">
+            <div class="card "style="display:block; overflow:hidden; width:95%; border:none;">
+              <div class="card-header d-flex flex-wrap justify-content-center align-items-center" style="height: 300px; background-color:white; border:none;">
+                <a  target="_blank" href="#"><img src="http://files.clps.brown.edu/brownlogos/CLPS-Logo.png" style="width:;" class="sponsorLogo" alt="Department of Cognitive, Linguistic, and Psychological Sciences" /></a>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        
+      </div>
+
+<!-- Organizers -->
+<div class="border-top my-3"></div>
+<div class="row p-4" id="faq">
+  <div class="col-12 bd-content">
+    <h2 class="text-center">Organizers</h2>
+  </div>
+</div>
+<div class="row">
+  
+  <div class="col-md-4 col-xs-6">
+    <div class="pp-card">
+      <div class="pp-card-header" class="text-muted">
+        <h5 class="card-title" align="center">Thomas Serre</h5>
+        <div>
+          <h6 class="card-subtitle text-muted m-1" align="center">
+            Chair
+          </h6>
+        </div>
+        <div>
+          <h6 class="card-subtitle text-muted m-1" align="center">
+            Carney Institute, Brown University  /
+            <a class="text-muted" href="http://twitter.com/tserre"
+              >@tserre</a
+            >
+            
+          </h6>
+        </div>
+        <center>
+          <img src="https://vivo.brown.edu/profile-images/179/58/tserre.jpg" class="rounded" style="height: 150px;" />
+        </center>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-md-4 col-xs-6">
+    <div class="pp-card">
+      <div class="pp-card-header" class="text-muted">
+        <h5 class="card-title" align="center">James Tompkin</h5>
+        <div>
+          <h6 class="card-subtitle text-muted m-1" align="center">
+            Chair
+          </h6>
+        </div>
+        <div>
+          <h6 class="card-subtitle text-muted m-1" align="center">
+            Computer Science, Brown University  /
+            <a class="text-muted" href="http://twitter.com/jtompkin"
+              >@jtompkin</a
+            >
+              /
+            <a class="text-muted" href="http://twitter.com/whatever"
+              >@whatever</a
+            >
+          </h6>
+        </div>
+        <center>
+          <img src="http://graphics.cs.brown.edu/imagesGVI/people/James_Tompkin.png" class="rounded" style="height: 150px;" />
+        </center>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-md-4 col-xs-6">
+    <div class="pp-card">
+      <div class="pp-card-header" class="text-muted">
+        <h5 class="card-title" align="center">Ritambhara Singh</h5>
+        <div>
+          <h6 class="card-subtitle text-muted m-1" align="center">
+            Chair
+          </h6>
+        </div>
+        <div>
+          <h6 class="card-subtitle text-muted m-1" align="center">
+            Computer Science &amp; Center for Computational and Molecular Biology, Brown University
+            
+          </h6>
+        </div>
+        <center>
+          <img src="https://vivo.brown.edu/profile-images/4e6/48c/42b/238/407/aa3/868/08b/e5c/c23/39/rsingh47_photo_.jpg" class="rounded" style="height: 150px;" />
+        </center>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-md-4 col-xs-6">
+    <div class="pp-card">
+      <div class="pp-card-header" class="text-muted">
+        <h5 class="card-title" align="center">Ivan Felipe Rodriguez</h5>
+        <div>
+          <h6 class="card-subtitle text-muted m-1" align="center">
+            Graduate Student
+          </h6>
+        </div>
+        <div>
+          <h6 class="card-subtitle text-muted m-1" align="center">
+            CLPS, Brown University
+            
+          </h6>
+        </div>
+        <center>
+          <img src="https://serre-lab.clps.brown.edu/wp-content/uploads/2014/09/IMG_0992-768x512.jpg" class="rounded" style="height: 150px;" />
+        </center>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-md-4 col-xs-6">
+    <div class="pp-card">
+      <div class="pp-card-header" class="text-muted">
+        <h5 class="card-title" align="center">Abdullah Rashed</h5>
+        <div>
+          <h6 class="card-subtitle text-muted m-1" align="center">
+            Graduate Student
+          </h6>
+        </div>
+        <div>
+          <h6 class="card-subtitle text-muted m-1" align="center">
+            Department of Neuroscience, Brown University
+            
+          </h6>
+        </div>
+        <center>
+          <img src="https://serre-lab.clps.brown.edu/wp-content/uploads/2014/02/IMG_3754.jpeg" class="rounded" style="height: 150px;" />
+        </center>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-md-4 col-xs-6">
+    <div class="pp-card">
+      <div class="pp-card-header" class="text-muted">
+        <h5 class="card-title" align="center">Aneri Soni</h5>
+        <div>
+          <h6 class="card-subtitle text-muted m-1" align="center">
+            Graduate Student
+          </h6>
+        </div>
+        <div>
+          <h6 class="card-subtitle text-muted m-1" align="center">
+            Department of Neuroscience, Brown University
+            
+          </h6>
+        </div>
+        <center>
+          <img src="https://serre-lab.clps.brown.edu/wp-content/uploads/2016/10/IMG_5934-1-768x512.jpg" class="rounded" style="height: 150px;" />
+        </center>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+
+      </div>
+    </div>
+
+    
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "UA-");
+    </script>
+
+    <!-- Footer -->
+    <footer class="footer bg-light p-4">
+      <div class="container">
+        <p class="float-right"><a href="#">Back to Top</a></p>
+        <p class="text-center">© 2020 Brown Unconf Organization Commitee</p>
+      </div>
+    </footer>
+
+    <!-- Code for hash tags -->
+    <script type="text/javascript">
+      $(document).ready(function () {
+        if (location.hash !== "") {
+          $('a[href="' + location.hash + '"]').tab("show");
+        }
+
+        $("a[data-toggle='tab']").on("shown.bs.tab", function (e) {
+          var hash = $(e.target).attr("href");
+          if (hash.substr(0, 1) == "#") {
+            var position = $(window).scrollTop();
+            location.replace("#" + hash.substr(1));
+            $(window).scrollTop(position);
+          }
+        });
+      });
+    </script>
+    <script src="static/js/lazy_load.js"></script>
+    
+  </body>
+</html>
